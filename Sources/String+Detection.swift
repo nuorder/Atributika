@@ -91,7 +91,7 @@ extension String {
                                    "gt":">"]
     
     public func detectTags(transformers: [TagTransformer] = []) -> (string: String, tagsInfo: [TagInfo]) {
-        let enableSpecialCharacter:Bool = true
+        let enableSpecialCharacter:Bool = false
 
 
         let scanner = Scanner(string: self)
