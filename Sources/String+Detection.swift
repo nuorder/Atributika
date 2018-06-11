@@ -63,18 +63,17 @@ extension String {
             guard let name = tagScanner.scanUpTo("=") else {
                 break
             }
-            
             guard tagScanner.scanString("=") != nil else {
                 break
             }
 
-            guard tagScanner.scanUpToCharacters(from: CharacterSet(charactersIn: "\"'")) != nil else {
+            guard tagScanner.scanString("'") != nil else {
                 break
             }
-            
-            let value = tagScanner.scanUpToCharacters(from: CharacterSet(charactersIn: "\"'")) ?? ""
-            
-           guard tagScanner.scanUpToCharacters(from: CharacterSet(charactersIn: "\"'")) != nil else {
+
+            let value = tagScanner.scanUpTo("'") ?? ""
+
+            guard tagScanner.scanString("'") != nil else {
                 break
             }
             
