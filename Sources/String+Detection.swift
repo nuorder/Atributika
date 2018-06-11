@@ -68,13 +68,13 @@ extension String {
                 break
             }
             
-            guard tagScanner.scanString("'") != nil else {
+            guard tagScanner.scanUpToCharacters("\"'") != nil else {
                 break
             }
             
-            let value = tagScanner.scanUpTo("'") ?? ""
+            let value = tagScanner.scanUpToCharacters("\"'") ?? ""
             
-            guard tagScanner.scanString("'") != nil else {
+            guard tagScanner.scanUpToCharacters("\"'") != nil else {
                 break
             }
             
