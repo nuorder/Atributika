@@ -90,7 +90,6 @@ extension String {
                                    "gt":">"]
     
     public func detectTags(transformers: [TagTransformer] = []) -> (string: String, tagsInfo: [TagInfo]) {
-        let enableSpecialCharacter:Bool = false
 
 
         let scanner = Scanner(string: self)
@@ -99,7 +98,7 @@ extension String {
         var tagsResult = [TagInfo]()
         var tagsStack = [(Tag, String.Index)]()
 
-        let charaterSet:String = enableSpecialCharacter ? "<&" : "<"
+        let charaterSet:String = "<"
 
         while !scanner.isAtEnd {
 
@@ -135,17 +134,6 @@ extension String {
                             }
                         }
                         scanner.scanString(">")
-                    }
-                } else if enableSpecialCharacter && scanner.scanString("&") != nil {
-                    if let specialString = scanner.scanUpTo(";") {
-                        if let spec = String.specials[specialString] {
-                            resultString += spec
-                        } else {
-                            resultString += specialString
-                        }
-                        scanner.scanString(";")
-                    } else {
-                        resultString += "&"
                     }
                 }
             }

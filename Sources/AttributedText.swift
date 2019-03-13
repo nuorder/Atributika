@@ -49,7 +49,7 @@ public protocol AttributedTextProtocol {
 
 extension AttributedTextProtocol {
     
-    private func makeAttributedString(getAttributes: (Style)-> [NSAttributedStringKey: Any]) -> NSAttributedString {
+    private func makeAttributedString(getAttributes: (Style)-> [NSAttributedString.Key: Any]) -> NSAttributedString {
         let attributedString = NSMutableAttributedString(string: string, attributes: getAttributes(baseStyle))
         
         for d in detections {
